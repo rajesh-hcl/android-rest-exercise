@@ -1,9 +1,12 @@
-package com.android.restapiexercise;
+package com.android.restapiexercise.ui.facts;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class FactsActivity extends AppCompatActivity {
+import com.android.restapiexercise.R;
+import com.android.restapiexercise.ui.base.BaseActivity;
+
+public class FactsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
