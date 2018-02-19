@@ -2,4 +2,8 @@
     <string name="app_name">RestApiExercise</string>
 
     <string name="some_error">Some Error Occurred!</string>
+    <string name="dialog_title">Alert</string>
+    <string name="dialog_msg">You are offline, Please turn on mobile data</string>
+    <string name="txt_ok">OK</string>
+    <string name="toolbar_title">Facts</string>
 </resources>

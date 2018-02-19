@@ -2,12 +2,17 @@ package com.android.restapiexercise.di.module;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 
+import com.android.restapiexercise.data.model.Row;
 import com.android.restapiexercise.di.ActivityContext;
 import com.android.restapiexercise.di.PerActivity;
+import com.android.restapiexercise.ui.facts.FactsAdapter;
 import com.android.restapiexercise.ui.facts.FactsMVPPresenter;
 import com.android.restapiexercise.ui.facts.FactsMVPView;
 import com.android.restapiexercise.ui.facts.FactsPresenter;
+
+import java.util.ArrayList;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,7 +27,7 @@ public class ActivityModule {
     private AppCompatActivity mActivity;
 
     public ActivityModule(AppCompatActivity activity) {
-        activity = mActivity;
+        mActivity = activity;
     }
 
     @Provides
@@ -37,5 +42,15 @@ public class ActivityModule {
     FactsMVPPresenter<FactsMVPView> provideFactPresenter(FactsPresenter<FactsMVPView> presenter)
     {
     return presenter;
+    }
+
+    @Provides
+    FactsAdapter provideFactsAdapter() {
+        return new FactsAdapter(new ArrayList<Row>());
+    }
+
+    @Provides
+    LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity){
+        return new LinearLayoutManager(activity);
     }
 }

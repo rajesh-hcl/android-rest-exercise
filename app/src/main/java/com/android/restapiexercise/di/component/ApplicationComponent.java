@@ -3,7 +3,8 @@ package com.android.restapiexercise.di.component;
 import android.app.Application;
 import android.content.Context;
 
-import com.android.restapiexercise.data.FactsApp;
+import com.android.restapiexercise.FactsApp;
+import com.android.restapiexercise.data.network.ApiInterface;
 import com.android.restapiexercise.di.ApplicationContext;
 import com.android.restapiexercise.di.module.ApplicationModule;
 
@@ -26,4 +27,5 @@ public interface ApplicationComponent {
 
     Application application();
 
+    ApiInterface apiInterface();
 }

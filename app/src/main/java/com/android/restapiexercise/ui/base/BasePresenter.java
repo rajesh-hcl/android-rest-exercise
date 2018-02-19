@@ -1,5 +1,7 @@
 package com.android.restapiexercise.ui.base;
 
+import javax.inject.Inject;
+
 /**
  * Base class that implements the Presenter interface and provides a base implementation for
  * onAttach() and onDetach(). It also handles keeping a reference to the mvpView that
@@ -11,6 +13,11 @@ package com.android.restapiexercise.ui.base;
 public class BasePresenter<V extends MVPView> implements MVPPresenter<V> {
 
     private V mMvpView;
+
+    @Inject
+    public BasePresenter(){
+
+    }
 
     @Override
     public void onAttach(V mvpView) {

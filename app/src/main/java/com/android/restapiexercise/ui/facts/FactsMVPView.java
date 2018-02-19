@@ -10,4 +10,6 @@ import com.android.restapiexercise.ui.base.MVPView;
 public interface FactsMVPView extends MVPView {
 
     void showFacts(Facts facts);
+
+    void showInternetOffDialog();
 }

@@ -1,4 +1,4 @@
-package com.android.restapiexercise.data;
+package com.android.restapiexercise;
 
 import android.app.Application;
 

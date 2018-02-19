@@ -19,25 +19,28 @@ import retrofit2.Response;
 public class FactsPresenter<V extends FactsMVPView> extends BasePresenter<V> implements FactsMVPPresenter<V> {
 
     private static final String TAG = FactsPresenter.class.getSimpleName();
+
     @Inject
     ApiInterface apiInterface;
 
+    @Inject
+    public FactsPresenter(){
+        super();
+    }
+
     @Override
     public void getFacts() {
-        getMvpView().showLoading();
         apiInterface.getFacts().enqueue(new Callback<Facts>() {
             @Override
             public void onResponse(Call<Facts> call, Response<Facts> response) {
                 if (response.isSuccessful()){
                     getMvpView().showFacts(response.body());
                 }
-                getMvpView().hideLoading();
             }
 
             @Override
             public void onFailure(Call<Facts> call, Throwable t) {
                 Logger.logError(TAG,t.getMessage());
-                getMvpView().hideLoading();
             }
         });
     }

@@ -13,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.restapiexercise.R;
+import com.android.restapiexercise.FactsApp;
+import com.android.restapiexercise.di.component.ActivityComponent;
+import com.android.restapiexercise.di.component.DaggerActivityComponent;
+import com.android.restapiexercise.di.module.ActivityModule;
 import com.android.restapiexercise.utlis.CommonUtils;
 import com.android.restapiexercise.utlis.NetworkUtils;
 
@@ -24,9 +28,20 @@ public abstract class BaseActivity extends AppCompatActivity implements MVPView 
 
     private ProgressDialog mProgressDialog;
 
+    private ActivityComponent mActivityComponent;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mActivityComponent = DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(((FactsApp) getApplication()).getCompponent())
+                .build();
+    }
+
+    public ActivityComponent getActivityComponent()
+    {
+        return mActivityComponent;
     }
 
     @Override
@@ -94,4 +109,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MVPView 
         textView.setTextColor(ContextCompat.getColor(this, android.R.color.white));
         snackbar.show();
     }
+
+    protected abstract void setUp();
 }
