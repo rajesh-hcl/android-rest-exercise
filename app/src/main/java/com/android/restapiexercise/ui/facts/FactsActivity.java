@@ -10,6 +10,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.android.restapiexercise.R;
 import com.android.restapiexercise.data.model.Facts;
@@ -48,7 +49,7 @@ public class FactsActivity extends BaseActivity implements FactsMVPView, SwipeRe
         setContentView(R.layout.activity_facts);
         ButterKnife.bind(this);
         getActivityComponent().inject(this);
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             mFacts = savedInstanceState.getParcelable(KEY_FACTS);
         }
         mPresenter.onAttach(this);
@@ -71,8 +72,8 @@ public class FactsActivity extends BaseActivity implements FactsMVPView, SwipeRe
         hideLoading();
         mSwipeRefreshLayout.setRefreshing(false);
         mFacts = facts;
-        getSupportActionBar().setTitle(facts.getTitle());
-        mAdapter.addFacts(facts.getRows());
+            mAdapter.addFacts(facts.getRows());
+            getSupportActionBar().setTitle(facts.getTitle());
     }
 
     @Override
@@ -81,6 +82,13 @@ public class FactsActivity extends BaseActivity implements FactsMVPView, SwipeRe
                 .setTitle(R.string.dialog_title)
                 .setMessage(R.string.dialog_msg)
                 .setPositiveButton(R.string.txt_ok, null).show();
+    }
+
+    @Override
+    public void updateViewForEmptyData() {
+        hideLoading();
+        mSwipeRefreshLayout.setRefreshing(false);
+        rvFacts.setVisibility(View.GONE);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.restapiexercise.R;
 import com.android.restapiexercise.data.model.Facts;
@@ -32,7 +33,7 @@ public class FactsAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         mFactsList = factsList;
     }
 
-    public class ViewHolder extends BaseViewHolder {
+    public class ViewHolder extends BaseViewHolder implements View.OnClickListener {
 
         @BindView(R.id.tvTitle)
         TextView tvTitle;
@@ -46,6 +47,7 @@ public class FactsAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -80,6 +82,12 @@ public class FactsAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 itemView.setVisibility(View.VISIBLE);
                 itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
+        }
+
+        @Override
+        public void onClick(View v) {
+            //we are showing a toast to check if the correct position was tapped or not
+            Toast.makeText(v.getContext(),"Clicked item : " + getAdapterPosition(),Toast.LENGTH_SHORT).show();
         }
     }
 
