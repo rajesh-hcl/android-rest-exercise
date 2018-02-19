@@ -72,6 +72,14 @@ public class FactsAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
             if (row.getDescription() != null)
                 tvDescription.setText(row.getDescription());
+
+            if (row.getTitle() == null && row.getDescription() == null && row.getImageHref() == null){
+                itemView.setVisibility(View.GONE);
+                itemView.setLayoutParams(new RecyclerView.LayoutParams(0,0));
+            }else {
+                itemView.setVisibility(View.VISIBLE);
+                itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            }
         }
     }
 
