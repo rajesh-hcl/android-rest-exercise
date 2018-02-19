@@ -42,6 +42,8 @@ public final class CommonUtils {
 
     private static final String TAG = "CommonUtils";
 
+    public static final String BASE_URL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/";
+
     private CommonUtils() {
         // This utility class is not publicly instantiable
     }

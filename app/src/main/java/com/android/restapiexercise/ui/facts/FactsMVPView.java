@@ -1,5 +1,6 @@
 package com.android.restapiexercise.ui.facts;
 
+import com.android.restapiexercise.data.model.Facts;
 import com.android.restapiexercise.ui.base.MVPView;
 
 /**
@@ -7,4 +8,6 @@ import com.android.restapiexercise.ui.base.MVPView;
  */
 
 public interface FactsMVPView extends MVPView {
+
+    void showFacts(Facts facts);
 }
