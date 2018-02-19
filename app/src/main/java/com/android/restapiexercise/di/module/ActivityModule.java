@@ -11,6 +11,9 @@ import com.android.restapiexercise.ui.facts.FactsAdapter;
 import com.android.restapiexercise.ui.facts.FactsMVPPresenter;
 import com.android.restapiexercise.ui.facts.FactsMVPView;
 import com.android.restapiexercise.ui.facts.FactsPresenter;
+import com.android.restapiexercise.ui.splash.SplashMVPPresenter;
+import com.android.restapiexercise.ui.splash.SplashMVPView;
+import com.android.restapiexercise.ui.splash.SplashPresenter;
 
 import java.util.ArrayList;
 
@@ -42,6 +45,13 @@ public class ActivityModule {
     FactsMVPPresenter<FactsMVPView> provideFactPresenter(FactsPresenter<FactsMVPView> presenter)
     {
     return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    SplashMVPPresenter<SplashMVPView> provideSplashMVPPresenter(SplashPresenter<SplashMVPView> presenter)
+    {
+        return presenter;
     }
 
     @Provides
