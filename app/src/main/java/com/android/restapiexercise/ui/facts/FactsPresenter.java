@@ -24,7 +24,7 @@ public class FactsPresenter<V extends FactsMVPView> extends BasePresenter<V> imp
     ApiInterface apiInterface;
 
     @Inject
-    public FactsPresenter(){
+    public FactsPresenter() {
         super();
     }
 
@@ -33,14 +33,16 @@ public class FactsPresenter<V extends FactsMVPView> extends BasePresenter<V> imp
         apiInterface.getFacts().enqueue(new Callback<Facts>() {
             @Override
             public void onResponse(Call<Facts> call, Response<Facts> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful() && response.body() != null && (response.body().getRows().size() > 0)) {
                     getMvpView().showFacts(response.body());
+                } else {
+                    getMvpView().updateViewForEmptyData();
                 }
             }
 
             @Override
             public void onFailure(Call<Facts> call, Throwable t) {
-                Logger.logError(TAG,t.getMessage());
+                Logger.logError(TAG, t.getMessage());
             }
         });
     }

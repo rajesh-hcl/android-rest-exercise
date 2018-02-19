@@ -1,4 +1,4 @@
-package com.android.restapiexercise;
+package com.android.restapiexercise.ui;
 
 
 import android.support.test.espresso.ViewInteraction;

@@ -12,4 +12,6 @@ public interface FactsMVPView extends MVPView {
     void showFacts(Facts facts);
 
     void showInternetOffDialog();
+
+    void updateViewForEmptyData();
 }
