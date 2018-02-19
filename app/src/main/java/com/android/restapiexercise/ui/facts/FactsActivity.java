@@ -48,7 +48,7 @@ public class FactsActivity extends BaseActivity implements FactsMVPView, SwipeRe
         setContentView(R.layout.activity_facts);
         ButterKnife.bind(this);
         getActivityComponent().inject(this);
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             mFacts = savedInstanceState.getParcelable(KEY_FACTS);
         }
         mPresenter.onAttach(this);
@@ -71,8 +71,10 @@ public class FactsActivity extends BaseActivity implements FactsMVPView, SwipeRe
         hideLoading();
         mSwipeRefreshLayout.setRefreshing(false);
         mFacts = facts;
-        getSupportActionBar().setTitle(facts.getTitle());
-        mAdapter.addFacts(facts.getRows());
+        if (facts != null) {
+            mAdapter.addFacts(facts.getRows());
+            getSupportActionBar().setTitle(facts.getTitle());
+        }
     }
 
     @Override
